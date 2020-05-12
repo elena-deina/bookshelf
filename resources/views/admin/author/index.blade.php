@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin - Authors')
+@section('title', __('app.title.admin') . ' - ' . __('app.title.authors') )
 
 @section('content')
     @if(Session::has('message'))
@@ -17,9 +17,9 @@
         <thead>
             <tr>
                 <th class="th-sm" width="10%">#</th>
-                <th class="th-sm" width="60%">Author</th>
-                <th class="th-sm" width="10%">Books count</th>
-                <th class="th-sm" width="20%">Actions</th>
+                <th class="th-sm" width="60%">{{ __('app.pages.title.author') }}</th>
+                <th class="th-sm" width="10%">{{ __('app.pages.title.books_count') }}</th>
+                <th class="th-sm" width="20%">{{ __('app.pages.title.actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -31,12 +31,20 @@
                     <td>
                         <div class="row no-gutters">
                             <div>
-                                <a href="{{ route('admin.authors.view', $author->id) }}" class="btn btn-outline-info mr-1" title="View">
+                                <a
+                                    href="{{ route('admin.authors.view', $author->id) }}"
+                                    class="btn btn-outline-info mr-1"
+                                    title="{{ __('app.actions.view') }}"
+                                >
                                     <i class="fa fa-info"></i>
                                 </a>
                             </div>
                             <div>
-                                <a href="{{ route('admin.authors.edit', $author->id) }}" class="btn btn-outline-warning mr-1" title="Edit">
+                                <a
+                                    href="{{ route('admin.authors.edit', $author->id) }}"
+                                    class="btn btn-outline-warning mr-1"
+                                    title="{{ __('app.actions.edit') }}"
+                                >
                                     <i class="fa fa-pencil-alt"></i>
                                 </a>
                             </div>
@@ -44,7 +52,7 @@
                                 <form action="{{ route('admin.authors.destroy', $author->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-outline-danger" title="Delete">
+                                    <button class="btn btn-outline-danger" title="{{ __('app.actions.delete') }}">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </form>

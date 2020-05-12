@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return redirect(\route('authors.index'));
@@ -24,7 +25,7 @@ Route::get('authors', 'AuthorController@index')->name('authors.index');
  | Admin panel
  |
  */
-Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
+Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['role:admin'])->group(function () {
     Route::name('authors.')->prefix('authors')->group(function () {
         Route::get('/', 'AuthorController@index')->name('index');
         Route::get('/create', 'AuthorController@create')->name('create');

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin - Authors')
+@section('title', __('app.title.admin') . ' - ' . __('app.title.authors') )
 
 @section('content')
     @if(Session::has('message'))
@@ -15,7 +15,11 @@
             <div class="float-right">
                 <div class="row">
                     <div>
-                        <a href="{{ route('admin.authors.edit', $author->id) }}" class="btn btn-outline-warning mr-1" title="Edit author">
+                        <a
+                            href="{{ route('admin.authors.edit', $author->id) }}"
+                            class="btn btn-outline-warning mr-1"
+                            title="{{ __('app.actions.edit_author') }}"
+                        >
                             <i class="fa fa-pencil-alt"></i>
                         </a>
                     </div>
@@ -23,7 +27,7 @@
                         <form action="{{ route('admin.authors.destroy', $author->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-outline-danger"  title="Delete author">
+                            <button class="btn btn-outline-danger"  title="{{ __('app.actions.delete_author') }}">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </form>
@@ -34,15 +38,19 @@
         <div class="card-body">
             <div class="container">
                 <div class="mt-1 mb-1">
-                    <a href="#" class="btn btn-outline-success" title="Create book">
+                    <a
+                        href="{{ route('admin.books.create') }}"
+                        class="btn btn-outline-success"
+                        title="{{ __('app.actions.create_book') }}"
+                    >
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>
                 <table class="table table-bordered table-sm" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th class="th-sm" width="80%">Book</th>
-                            <th class="th-sm" width="20%">Actions</th>
+                            <th class="th-sm" width="80%">{{ __('app.pages.title.book') }}</th>
+                            <th class="th-sm" width="20%">{{ __('app.pages.title.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,10 +58,18 @@
                         <tr>
                             <td>{{ $book->name }}</td>
                             <td>
-                                <a href="{{ route('admin.books.edit', $book->id) }}" class="btn btn-outline-warning" title="Edit book">
+                                <a
+                                    href="{{ route('admin.books.edit', $book->id) }}"
+                                    class="btn btn-outline-warning"
+                                    title="{{ __('app.actions.edit_book') }}"
+                                >
                                     <i class="fa fa-pencil-alt"></i>
                                 </a>
-                                <a href="{{ route('admin.books.destroy', $book->id) }}" class="btn btn-outline-danger" title="Delete book">
+                                <a
+                                    href="{{ route('admin.books.destroy', $book->id) }}"
+                                    class="btn btn-outline-danger"
+                                    title="{{ __('app.actions.delete_book') }}"
+                                >
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>

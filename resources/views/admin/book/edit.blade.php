@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin - Authors')
+@section('title', __('app.title.admin') . ' - ' . __('app.title.books') )
 
 @section('content')
     <div class="card">
@@ -13,7 +13,7 @@
                     @endif
 
                     <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">Name</label>
+                        <label for="name" class="col-sm-2 col-form-label">{{ __('app.book.name') }}</label>
                         <div class="col-sm-10">
                             <input
                                 class="form-control @error('name') is-invalid @enderror"
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="authorId" class="col-sm-2 col-form-label">Author</label>
+                        <label for="authorId" class="col-sm-2 col-form-label">{{ __('app.book.author') }}</label>
                         <div class="col-sm-10">
                             <select class="form-control @error('author_id') is-invalid @enderror" name="author_id" id="authorId">
                                 @foreach($authors as $author)
@@ -46,8 +46,8 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary mb-2">Save</button>
-                        <a href="{{ url()->previous() }}" class="btn btn-warning mb-2">Cancel</a>
+                        <button class="btn btn-primary mb-2">{{ __('app.actions.save') }}</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-warning mb-2">{{ __('app.actions.cancel') }}</a>
                     </div>
                 </form>
             </div>

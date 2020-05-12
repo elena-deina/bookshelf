@@ -15,11 +15,11 @@ class BookSeeder extends Seeder
         $authors = \App\Models\Author::get()->toArray();
         $ids = \Illuminate\Support\Arr::pluck($authors, 'id');
 
-        for ($i = 0; $i < 300; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             \DB::table('books')
                 ->insert([
                     'name' => $faker->word,
-                    'author_id' => array_rand($ids),
+                    'author_id' => $ids[array_rand($ids)],
                 ]);
         }
     }

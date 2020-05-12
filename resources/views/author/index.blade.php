@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title', 'Authors')
+@section('title', __('app.title.authors'))
 
 @section('content')
     <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">

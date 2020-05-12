@@ -72,7 +72,7 @@ class BookController extends Controller
     {
         $this->repository->update($book, $request->validated());
 
-        return redirect(route('admin.books.view', $book->id))->with('message', 'Record updated');
+        return redirect(route('admin.books.view', $book->id))->with('message', __('app.messages.record_updated'));
     }
 
     /**
@@ -94,7 +94,7 @@ class BookController extends Controller
     {
         $book = $this->repository->store($request->validated());
 
-        return redirect(route('admin.books.view', $book->id))->with('message', 'Record created');
+        return redirect(route('admin.books.view', $book->id))->with('message', __('app.messages.record_created'));
     }
 
     /**
@@ -105,6 +105,6 @@ class BookController extends Controller
     {
         $this->repository->destroy($book);
 
-        return redirect(route('admin.books.index'))->with('message', 'Record deleted');
+        return redirect(route('admin.books.index'))->with('message', __('app.messages.record_deleted'));
     }
 }

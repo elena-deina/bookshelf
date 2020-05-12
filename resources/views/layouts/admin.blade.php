@@ -9,7 +9,10 @@
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-dark" href="{{ route('admin.books.index') }}">Books</a>
         </nav>
-        <a class="btn btn-outline-primary" href="#">Sign up</a>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button class="btn btn-outline-primary">Logout</button>
+        </form>
     </div>
     <div class="container">
         @yield('content')

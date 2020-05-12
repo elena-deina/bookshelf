@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin - Authors')
+@section('title', __('app.title.admin') . ' - ' . __('app.title.authors') )
 
 @section('content')
     <div class="card">
@@ -12,7 +12,7 @@
                         @method('PUT')
                     @endif
                     <div class="form-group row">
-                        <label for="lastName" class="col-sm-2 col-form-label">Last name</label>
+                        <label for="lastName" class="col-sm-2 col-form-label">{{ __('app.author.last_name') }}</label>
                         <div class="col-sm-10">
                             <input
                                 class="form-control @error('last_name') is-invalid @enderror"
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="firstName" class="col-sm-2 col-form-label">First name</label>
+                        <label for="firstName" class="col-sm-2 col-form-label">{{ __('app.author.first_name') }}</label>
                         <div class="col-sm-10">
                             <input
                                 class="form-control @error('first_name') is-invalid @enderror"
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="middleName" class="col-sm-2 col-form-label">Middle name</label>
+                        <label for="middleName" class="col-sm-2 col-form-label">{{ __('app.author.middle_name') }}</label>
                         <div class="col-sm-10">
                             <input
                                 class="form-control @error('middle_name') is-invalid @enderror"
@@ -57,8 +57,8 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary mb-2">Save</button>
-                        <a href="{{ url()->previous() }}" class="btn btn-warning mb-2">Cancel</a>
+                        <button class="btn btn-primary mb-2">{{ __('app.actions.save') }}</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-warning mb-2">{{ __('app.actions.cancel') }}</a>
                     </div>
                 </form>
             </div>

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::name('books.')->prefix('books')->group(function () {
+    Route::get('/', 'BookController@index')->name('index');
+    Route::get('{book}', 'BookController@view')->name('view');
+    Route::post('/', 'BookController@store')->name('store');
+    Route::put('{book}', 'BookController@update')->name('update');
+    Route::delete('{book}', 'BookController@destroy')->name('destroy');
 });

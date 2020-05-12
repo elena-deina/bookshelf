@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin - Books')
+@section('title', __('app.title.admin') . ' - ' . __('app.title.books') )
 
 @section('content')
     @if(Session::has('message'))
@@ -15,7 +15,11 @@
             <div class="float-right">
                 <div class="row">
                     <div>
-                        <a href="{{ route('admin.books.edit', $book->id) }}" class="btn btn-outline-warning mr-1" title="Edit book">
+                        <a
+                            href="{{ route('admin.books.edit', $book->id) }}"
+                            class="btn btn-outline-warning mr-1"
+                            title="{{ __('app.actions.edit_book') }}"
+                        >
                             <i class="fa fa-pencil-alt"></i>
                         </a>
                     </div>
@@ -23,7 +27,7 @@
                         <form action="{{ route('admin.books.destroy', $book->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-outline-danger" title="Delete book">
+                            <button class="btn btn-outline-danger" title="{{ __('app.actions.delete_book') }}">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </form>

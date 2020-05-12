@@ -65,7 +65,7 @@ class AuthorController extends Controller
     {
         $this->repository->update($author, $request->validated());
 
-        return redirect(route('admin.authors.view', $author->id))->with('message', 'Record updated');
+        return redirect(route('admin.authors.view', $author->id))->with('message', __('app.messages.record_updated'));
     }
 
     /**
@@ -86,7 +86,7 @@ class AuthorController extends Controller
     {
         $author = $this->repository->store($request->validated());
 
-        return redirect(route('admin.authors.view', $author->id))->with('message', 'Record created');
+        return redirect(route('admin.authors.view', $author->id))->with('message', __('app.messages.record_created'));
     }
 
     /**
@@ -97,6 +97,6 @@ class AuthorController extends Controller
     {
         $this->repository->destroy($author);
 
-        return redirect(route('admin.authors.index'))->with('message', 'Record deleted');
+        return redirect(route('admin.authors.index'))->with('message', __('app.messages.record_deleted'));
     }
 }
